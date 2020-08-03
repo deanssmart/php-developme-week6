@@ -19,11 +19,17 @@ require __DIR__ . "/vendor/autoload.php";
 
 $side= 15;
 
-for($col = 1; $col <= $side; $col += 1){
-    for($row = 1; $row <= $side; $row += 1){
-
-        echo(($col + $row) . "\t");
+for($x = 1; $x <= $side; $x += 1){
+    if($x % $side === 0){
+        $col = $side;
+    } else {
+        $col = $x % $side;
     }
+    for($y = 1; $y <= $side; $y += 1){
+        $n = $y * $col;
+        echo($n . "\t");
+    }
+        echo("\n");
 
 }
 
