@@ -8,11 +8,7 @@
 require __DIR__ . "/vendor/autoload.php";
 
 function double($arr){
-    $newArr = [];
-    foreach($arr as $val){
-        $newArr[] = $val * 2;
-    }
-    return $newArr;
+    return collect($arr)->map(fn($n) => $n * 2)->all();
 }
 
 dump(
