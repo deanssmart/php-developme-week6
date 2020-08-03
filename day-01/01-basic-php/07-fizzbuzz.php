@@ -27,7 +27,7 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
-for($i = 0; $i <= 100; $i += 1){
+for($i = 1; $i <= 100; $i += 1){
     $str = $i % 3 === 0 ? "Fizz" : "";
     $str .= $i % 5 === 0 ? "Buzz" : "";
     dump($str === "" ? $i : $str);
