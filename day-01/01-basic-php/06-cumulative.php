@@ -10,6 +10,13 @@
 // 1 + 2 + 3 + 4
 // etc.
 
+// 1
+// 3
+// 6
+// 10
+// ...
+// 1275
+
 require __DIR__ . "/vendor/autoload.php";
 
 $total = 0;
