@@ -24,4 +24,9 @@ class Book
     {
         return $this->currentPage;
     }
+
+    public function title()
+    {
+        return $this->title;
+    }
 }
