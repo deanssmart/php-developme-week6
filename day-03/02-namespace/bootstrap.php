@@ -14,3 +14,17 @@ $sayHi = new Hello();
 
 dump($sayHi->hello("Orb")); // "Hello Orb"
 dump($sayHi->hello("Horse")); // "Hello Horse"
+
+// Create a class Person in the App namespace. It should accept a first and last name on creation. It should have a sayHelloTo() method that takes another Person and says hello to them. Make sure your properties are all private: so you'll need to a create fullName() method too.
+
+// Use the class as follows in your bootstrap.php:
+
+echo "\nQuestion 2\n";
+
+use App\Person;
+
+$person1 = new Person("Lynne",  "Ramsay");
+$person2 = new Person("Wes", "Anderson");
+
+dump($person1->sayHelloTo($person2)); // "Hello Wes Anderson"
+dump($person2->sayHelloTo($person1)); // "Hello Lynne Ramsay"
