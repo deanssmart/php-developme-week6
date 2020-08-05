@@ -10,24 +10,27 @@ require __DIR__ . "/vendor/autoload.php";
 
 class Recipe
 {
-    private $recipeName;
-    private $list = [];
-    private $process = "";
+    private $name;
+    private $ingredients = [];
+    private $method = "";
 
-    public function __construct($recipeName)
+    public function __construct($name)
     {
-        $this->recipeName = $recipeName;        
+        $this->name = $name;        
     }
 
-    public function addIngredient($name, $amount)
+    public function addIngredient($ingredient, $amount)
     {
-        $this->list[] = [$amount, $name->getName()];
+        $this->ingredients[] = [
+            "ingredient" => $ingredient,
+            "amount" => $amount
+        ];
         return $this;
     }
 
     public function addMethod($method)
     {
-        $this->process .= $method;
+        $this->method .= $method;
         return $this;
     }
 
