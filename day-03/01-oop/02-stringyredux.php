@@ -35,7 +35,7 @@ class StringyRedux
 
     public function append($str)
     {
-       $this->string = $this->string . $str;
+       $this->string .= $str;
        return $this;
     }
 
