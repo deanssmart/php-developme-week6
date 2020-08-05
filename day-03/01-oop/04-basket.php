@@ -9,9 +9,7 @@ require __DIR__ . "/vendor/autoload.php";
 class Basket
 {
     private $items = [];
-    private $sum = 0;
-    private $names = [];
-
+    
     public function add($item)
     {
         $this->items[] = $item;       
@@ -19,18 +17,20 @@ class Basket
 
     public function total()
     {
+        $sum = 0;
         foreach($this->items as $item){
-            $this->sum += $item->getCost();
+            $sum += $item->getCost();
         }
-        return "£" . number_format($this->sum, 2);
+        return "£" . number_format($sum, 2);
     }
 
     public function items()
     {
+        $names = [];
         foreach($this->items as $item){
-            $this->names[] = $item->getName();
+            $names[] = $item->getName();
         }
-        return $this->names;
+        return $names;
     }
 }
 

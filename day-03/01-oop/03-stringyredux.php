@@ -8,8 +8,7 @@ require __DIR__ . "/vendor/autoload.php";
 class StringyRedux
 {
     private $string;
-    private $newString = "";
-
+    
     public function __construct($string)
     {
         $this->string = $string;
