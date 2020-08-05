@@ -26,7 +26,7 @@ class Wombat
 
     public function sayHelloTo($wombat)
     {
-        return "Hello {$wombat->name}";
+        return "Hello {$wombat->getName()}";
     }
 
     public function giveHug()

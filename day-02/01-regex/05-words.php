@@ -10,3 +10,7 @@ function words($str) {
 
 dump(words("This is a sentence")); // ["This", "is", "a", "sentence"]
 dump(words("Hello, my name is Dolemite")); // ["Hello", "my", "name", "is", "Dolemite"]
+
+
+
+// return preg_split("/[^\w]+/", $str); better option
