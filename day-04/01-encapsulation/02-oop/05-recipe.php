@@ -5,7 +5,7 @@
 // Hint: you can use "\n" to add a line break to a string
 
 // Hint: PHP has array_search and array_unique methods
-
+declare(strict_types=1);
 require __DIR__ . "/vendor/autoload.php";
 
 class Recipe
@@ -14,12 +14,12 @@ class Recipe
     private $ingredients = [];
     private $method = "";
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;        
     }
 
-    public function addIngredient($ingredient, $amount)
+    public function addIngredient(Ingredient $ingredient, string $amount) : Recipe
     {
         $this->ingredients[] = [
             "ingredient" => $ingredient,
@@ -28,13 +28,13 @@ class Recipe
         return $this;
     }
 
-    public function addMethod($method)
+    public function addMethod(string $method) : Recipe
     {
         $this->method .= $method;
         return $this;
     }
 
-    public function display()
+    public function display() : string
     {
         $ingredients = [];
 
@@ -54,7 +54,7 @@ class Recipe
         return join("\n\n", $recipe);
     }
 
-    private function getDietary()
+    private function getDietary() : array
     {
         $dietary = [];
 
@@ -66,12 +66,12 @@ class Recipe
         return array_unique($dietary);
     }
 
-    public function dietary()
+    public function dietary() : string
     {
         return join(", ", $this->getDietary());
     }
 
-    public function vegan()
+    public function vegan() : bool
     {
         return array_search("animal produce", $this->getDietary()) === false;
     }
@@ -83,18 +83,18 @@ class Ingredient
     private $name;
     private $notes;
 
-    public function __construct($name, $notes)
+    public function __construct(string $name, array $notes)
     {
         $this->name = $name;
         $this->notes = $notes;
     }
 
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function getNotes()
+    public function getNotes() : array
     {
         return $this->notes;
     }
@@ -113,7 +113,7 @@ $cake = new Recipe("Cake");
 $cake->addIngredient($flour, "200g");
 $cake->addIngredient($butter, "100g");
 $cake->addIngredient($sugar, "50g");
-$cake->addIngredient($eggs, 2);
+$cake->addIngredient($eggs, "2");
 
 // we can add a method
 $cake->addMethod("Put them in a bowl, mix them together, cook for a bit. Job's a good'un");
