@@ -3,19 +3,20 @@
 // Create two classes Basket and BasketItem. Basket should have an add method which lets you add BasketItems to the basket. It should have a total method that returns the value of all the items' prices. It should have an items method that returns an array of item names.
 
 // Hint: PHP has a number_format function
-
+declare(strict_types=1);
 require __DIR__ . "/vendor/autoload.php";
 
 class Basket
 {
     private $items = [];
     
-    public function add($item)
+    public function add(BasketItem $item) : Basket
     {
-        $this->items[] = $item;       
+        $this->items[] = $item; 
+        return $this;      
     }
 
-    public function total()
+    public function total() : string
     {
         $sum = 0;
         foreach($this->items as $item){
@@ -24,7 +25,7 @@ class Basket
         return "£" . number_format($sum, 2);
     }
 
-    public function items()
+    public function items() : array
     {
         $names = [];
         foreach($this->items as $item){
@@ -39,18 +40,18 @@ class BasketItem
     private $name;
     private $cost;
     
-    public function __construct($name, $cost)
+    public function __construct(string $name, float $cost)
     {
         $this->name = $name;
         $this->cost = $cost;
     }
 
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function getCost()
+    public function getCost() : float
     {
         return $this->cost;
     }
