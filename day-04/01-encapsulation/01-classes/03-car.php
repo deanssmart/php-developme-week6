@@ -10,28 +10,28 @@ class Car
     private $plate;
     private $mileage = 0;
 
-    public function __construct($make, $plate)
+    public function __construct(string $make, string $plate)
     {
         $this->make = $make;
         $this->plate = $plate;
     }
 
-    public function getNumberPlate()
+    public function getNumberPlate() : string
     {
         return $this->plate;
     }
 
-    public function getMake()
+    public function getMake() : string
     {
         return $this->make;
     }
 
-    public function getMileage()
+    public function getMileage() : float
     {
         return $this->mileage;
     }
 
-    public function addJourney($miles)
+    public function addJourney(float $miles) : Car 
     {
         $this->mileage += $miles;
         return $this;
