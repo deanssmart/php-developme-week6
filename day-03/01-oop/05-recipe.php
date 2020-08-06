@@ -36,7 +36,44 @@ class Recipe
 
     public function display()
     {
-        return "{$this->recipeName}\n Ingredients\n";
+        $ingredients = [];
+
+        foreach($this->ingredients as $item){
+            $ingredient = $item["ingredient"];
+            $ingredients[] = "- {$item["amount"]} {$ingredient->getName()}";
+        }
+
+        $recipe = [
+            $this->name,
+            "Ingredients",
+            join("\n", $ingredients),
+            "Method",
+            $this->method,
+        ];
+
+        return join("\n\n", $recipe);
+    }
+
+    private function getDietary()
+    {
+        $dietary = [];
+
+        foreach($this->ingredients as $item){
+            $ingredient = $item["ingredient"];
+            $dietary = array_merge($dietary, $ingredient->getNotes());
+        }
+
+        return array_unique($dietary);
+    }
+
+    public function dietary()
+    {
+        return join(", ", $this->getDietary());
+    }
+
+    public function vegan()
+    {
+        return array_search("animal produce", $this->getDietary()) === false;
     }
 
 }
