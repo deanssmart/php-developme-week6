@@ -3,34 +3,34 @@
 // Create a class that lets you do things with a string.
 
 // Hint: you might want to look at the PHP string functions
-
+declare(strict_types=1);
 require __DIR__ . "/vendor/autoload.php";
 
 class Stringy
 {
     private $str;
 
-    public function __construct($str)
+    public function __construct(string $str)
     {
         $this->str = $str;
     }
 
-    public function lower()
+    public function lower() : string
     {
         return strtolower($this->str);
     }
 
-    public function upper()
+    public function upper() : string
     {
         return strtoupper($this->str);
     }
 
-    public function append()
+    public function append() : string
     {
         return $this->str . "blah";
     } 
     
-    public function repeat($n)
+    public function repeat(int $n) : string
     {
         return str_repeat($this->str, $n);
     }  
